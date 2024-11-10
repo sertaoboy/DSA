@@ -4,7 +4,7 @@
 - Listas ligadas e lista duplamente ligadas
 - Pilhas
 - Filas
-- Arvores(Binarias)
+- Arvores (Binarias)
 - Dicionarios e Tabelas Hash
 - Heaps e Fila de Prioridade
 - Arvore de Busca
