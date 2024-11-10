@@ -26,7 +26,7 @@ public class Fila implements TADFila{
             System.out.println("Fila cheia. Elemento nao inserido.");
             throw new ArrayIndexOutOfBoundsException("Fila cheia");
         }
-        fila[posicao = posicao  + 1] = valor;
+        fila[++posicao] = valor;
     }
 
     @Override
