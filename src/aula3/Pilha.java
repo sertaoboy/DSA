@@ -70,6 +70,10 @@ public class Pilha implements TADPilha{
     }
 
 
+
+
+
+
     public static void main(String[] args) {
         Pilha pilha = new Pilha(5);
         pilha.removerTopo();
