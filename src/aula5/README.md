@@ -16,6 +16,7 @@ public interface TADFila<T> {
 - Para a implementacao, precisaremos de uma classe `No`;
 - Essa classe ira servir para representar os **elementos na fila**;
 ```java
+//classe que representa os elementos da minha fila
 public class No<T> {
 
     private T valor;
@@ -49,15 +50,15 @@ public class No<T> {
 
 ### Classe Fila
 ```java
-public class Fila<T> implements TADFila {
+public class Fila<T> implements TADFila<T> {
 
     private No<T> cabeca;
     private int tamanho;
 
 
     @Override
-    public void inserirFinal(Object valor) {
-        No<T> novoNo = new No<T>((T) valor, null);
+    public void inserirFinal(T valor) {
+        No<T> novoNo = new No<T>(valor, null);
         if (filaVazia()) {
             cabeca = novoNo;
         } else {

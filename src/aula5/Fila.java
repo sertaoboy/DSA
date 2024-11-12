@@ -1,14 +1,14 @@
 package aula5;
 
-public class Fila<T> implements TADFila{
+public class Fila<T> implements TADFila<T>{
 
     private No<T> cabeca;
     private int tamanho;
 
 
     @Override
-    public void inserirFinal(Object valor) {
-        No<T> novoNo = new No<T>((T)valor,null);
+    public void inserirFinal(T valor) {
+        No<T> novoNo = new No<T>(valor,null);
         if(filaVazia()){
             cabeca = novoNo;
         }else{
