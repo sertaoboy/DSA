@@ -130,8 +130,72 @@ public class Fila<T> implements TADFila<T> {
 2. Para o proximo elemento da adicao, (considerando que seja um No com valor 12) ao inserirmos, a _referencia_ do No no `indice 0`, que antes apontava para `null`, agora aponta para o elemento que acabamos de inserir: No com valor de 12, e este por consequencia deve apontar para `null`;
 - Remocao:
 1. Considerando que na Fila temos um atributo `No cabeca`; este No nada mais e que uma referencia para **o inicio da fila**; a partir dele conseguimos acessar o valor e a referencia para o proximo No e assim sucessivamente (terminologia de fila _encadeada_;
-2. Sabendo disso, ja temos uma referencia para qual elemento deve sair da fila, o "No Cabeca" (FIFO);
+2. Sabendo disso, ja temos uma referencia para qual elemento deve sair da fila, o atributo `No cabeca` (FIFO);
 3. Entao quando removemos o elemento, a referencia do atributo `cabeca` deve apontar para **a referencia do proximo No** contido nesse elemento; fazendo com que esta referencia `cabeca` aponte agora para o No de valor 12;
 4. O No de valor 10 agora esta deslocado da fila, ja que o atributo `cabeca` aponta para o No de valor 12, fazendo com que a referencia do proximo No do No de valor 10 seja `null`;
 > No momento em que **nao existe referencias** para o objeto de No de valor 10 e quando a referencia do proximo No desse objeto aponta para `null`, o **Garbage Collector da JVM** identifica esse objeto sem utilizacao e mata da memoria. <br>
 
+
+### Observacoes:
+- No **metodo de insercao** da fila encadeada instanciamos um objeto `No<T> novoNo` onde nos parametros do construtor colocaremos o `valor`, vindo do parametro do metodo, e `null`, seguindo a logica citada anteriormente;
+- Se a validacao de `filaVazia()` retornar `true`, o atributo `No<T> cabeca` passa a se referenciar a instancia criada na linha anterior `novoNo`;
+- Se a validacao de `filaVazia()` retornar `false`, criaremos uma **variavel de referencia** `auxiliar`, onde ela aponta para o atributo `cabeca`;
+- Essa referencia serve para percorrermos a fila ate achar algum `No proximo` que esteja `null`;
+- A partir do momento que o proximo `No` ser `null`, atraves dessa variavel auxiliar conseguimos usar o metodo `.setProximo(novoNo)`, atribuindo o `novoNo` ao ultimo indice disponivel;
+- Por fim incremementamos o `tamanho`.
+```java
+@Override
+    public void inserirFinal(T valor) {
+        No<T> novoNo = new No<T>(valor,null);
+        if(filaVazia()){
+            cabeca = novoNo;
+        }else{
+            No<T> auxiliar = cabeca;
+           while(auxiliar.getProximo()!=null){
+               auxiliar = auxiliar.getProximo();
+           }
+           auxiliar.setProximo(novoNo);
+        }
+        tamanho++;
+    }
+```
+
+- No **metodo de remocao** da fila encadeada, validamos se a fila esta vazia novamente, se sim imprimimos uma mensagem;
+- Caso contrario, criaremos uma variavel de referencia `No<T> noRemovido`  para o atributo `cabeca`; 
+- Depois atribuimos um novo valor ao atributo atraves do retorno de `cabeca.getProximo()`;
+- Decrementa-se de `tamanho` e retorna o valor de `noRemovido.getValor()`.
+```java
+ @Override
+    public T removeInicio() {
+        if(filaVazia()) {
+            System.out.println("Fila vazia, nao ha elementos para remocao.");
+            return null;
+        }
+        No<T> noRemovido = cabeca;
+        cabeca = cabeca.getProximo();
+        noRemovido.setProximo(null);
+        tamanho--;
+        return noRemovido.getValor();
+    }
+```
+
+- No **metodo de impressao** da fila encadeada, validamos se a fila esta vazia, se sim imprimomos uma mensagem;
+- Caso contrario, tambem criaremos uma variavel `No<T> auxiliar` para se referenciar ao atributo `cabeca`;
+- Depois, condicionamos em um laco `while` o valor dessa variavel `auxiliar` o valor `null`;
+- Enquanto nao for `null` imprimimos `auxiliar.getValor()` e logo em seguida atribuimos uma nova referencia para a variavel atraves do metodo `getProximo()` ate o valor for `null`, indicando que chegou no final da fila.
+```java
+ @Override
+    public void imprimirFila(){
+        if(filaVazia()){
+            System.out.println("Fila vazia, nao ha elementos para imprimir.");
+            return;
+        }else{
+            No<T> auxiliar = cabeca;
+            while(auxiliar!=null) {
+                System.out.print(" => "+auxiliar.getValor());
+                auxiliar = auxiliar.getProximo();
+            }
+            System.out.println();
+        }
+    }
+```
