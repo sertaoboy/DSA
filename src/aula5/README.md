@@ -129,9 +129,9 @@ public class Fila<T> implements TADFila<T> {
 1. Supondo que vamos inserir um No que tenha o valor 10; apos o No ser adicionado na fila, no `indice 0` teremos o _valor_ 10 e a _referencia_ apontando para `null`, considerando que a fila esteja vazia;
 2. Para o proximo elemento da adicao, (considerando que seja um No com valor 12) ao inserirmos, a _referencia_ do No no `indice 0`, que antes apontava para `null`, agora aponta para o elemento que acabamos de inserir: No com valor de 12, e este por consequencia deve apontar para `null`;
 - Remocao:
-1. Considerando que na fila temos "um No Cabeca"; este No nada mais e que uma referencia para **o inicio da fila**; a partir dele conseguimos acessar o valor e a referencia para o proximo No e assim sucessivamente (terminologia de fila _encadeada_;
+1. Considerando que na Fila temos um atributo `No cabeca`; este No nada mais e que uma referencia para **o inicio da fila**; a partir dele conseguimos acessar o valor e a referencia para o proximo No e assim sucessivamente (terminologia de fila _encadeada_;
 2. Sabendo disso, ja temos uma referencia para qual elemento deve sair da fila, o "No Cabeca" (FIFO);
-3. Entao quando removemos o elemento, a referencia do "No Cabeca" deve apontar para **a referencia do proximo No** contido nesse elemento; fazendo com que esta referencia "Cabeca" aponte agora para o No de valor 12;
-4. O No de valor 10 agora esta deslocado da fila, ja que o "No Cabeca" aponta para o No de valor 12, fazendo com que a referencia do proximo No do No de valor 10 seja `null`;
+3. Entao quando removemos o elemento, a referencia do atributo `cabeca` deve apontar para **a referencia do proximo No** contido nesse elemento; fazendo com que esta referencia `cabeca` aponte agora para o No de valor 12;
+4. O No de valor 10 agora esta deslocado da fila, ja que o atributo `cabeca` aponta para o No de valor 12, fazendo com que a referencia do proximo No do No de valor 10 seja `null`;
 > No momento em que **nao existe referencias** para o objeto de No de valor 10 e quando a referencia do proximo No desse objeto aponta para `null`, o **Garbage Collector da JVM** identifica esse objeto sem utilizacao e mata da memoria. <br>
 
