@@ -1,6 +1,6 @@
 package aula5;
 
-public interface TADFila<T> {
+public interface TADFilaEncadeada<T> {
     //Operacoes principais
     void inserirFinal(T t);
     T removeInicio();

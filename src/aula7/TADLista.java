@@ -1,13 +1,17 @@
 package aula7;
 
-import aula6.No;
 
-public interface TADFila<T> {
 
-    void adicionar(T valor, No posicao);
-    void remover(No posicao);
-    void imprimir();
-    boolean filaVazia();
+public interface TADLista<T> {
+
+    void insereInicio(T valor);
+    void insereFinal(T valor);
+    void inserePosicao(T valor, int posicao);
+    T removePosicao(int posicao);
+
+    boolean listaVazia();
+    void imprimeLista();
+
 
 
 

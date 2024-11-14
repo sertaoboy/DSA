@@ -1,11 +1,11 @@
 package aula6;
 
-public class Pilha<T> implements TADPilha<T> {
+public class PilhaEncadeada<T> implements TADPilhaEncadeada<T> {
 
     private int tamanho;
     private No<T> cabeca;
 
-    public Pilha(){
+    public PilhaEncadeada(){
         cabeca = null;
         this.tamanho = 0;
     }
@@ -63,7 +63,7 @@ public class Pilha<T> implements TADPilha<T> {
 
 
     public static void main(String[] args) {
-        TADPilha pilha = new Pilha();
+        TADPilhaEncadeada<String> pilha = new PilhaEncadeada<String>();
         pilha.imprimir();
         pilha.inserir("elemento 1");
         pilha.imprimir();
@@ -75,7 +75,8 @@ public class Pilha<T> implements TADPilha<T> {
         pilha.imprimir();
         pilha.inserir("elemento 5");
         pilha.imprimir();
-        pilha.inserir("elemento 6");
+        pilha.inserir("nada");
+        pilha.imprimir();
 
         pilha.remover();
         pilha.imprimir();

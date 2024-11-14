@@ -1,6 +1,6 @@
 package aula5;
 
-public class Fila<T> implements TADFila<T>{
+public class FilaEncadeada<T> implements TADFilaEncadeada<T> {
 
     private No<T> cabeca;
     private int tamanho;
@@ -64,7 +64,7 @@ public class Fila<T> implements TADFila<T>{
 
 
     public static void main(String[] args) {
-        TADFila<Integer> fila = new Fila<Integer>();
+        TADFilaEncadeada<Integer> fila = new FilaEncadeada<Integer>();
         fila.imprimirFila();
         fila.inserirFinal(10);
         fila.imprimirFila();

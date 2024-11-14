@@ -1,6 +1,6 @@
 package aula6;
 
-public interface TADPilha<T> {
+public interface TADPilhaEncadeada<T> {
     void inserir(T t);
     void remover();
     void imprimir();
