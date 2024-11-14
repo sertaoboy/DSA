@@ -2,7 +2,7 @@ package aula7;
 
 
 
-public interface TADLista<T> {
+public interface TADListaEncadeada<T> {
 
     void insereInicio(T valor);
     void insereFinal(T valor);
@@ -11,8 +11,4 @@ public interface TADLista<T> {
 
     boolean listaVazia();
     void imprimeLista();
-
-
-
-
 }
