@@ -2,10 +2,9 @@ package aula7;
 
 
 
-public class ListaEncadeada<T> implements TADLista<T> {
+public class ListaEncadeada<T> implements TADListaEncadeada<T> {
 
     private No<T> cabeca;
-
     private int tamanho;
 
 
