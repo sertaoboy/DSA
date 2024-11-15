@@ -168,8 +168,21 @@ public class ListaEncadeada<T> implements TADListaEncadeada<T> {
     }
 ```
 ### Insercao no final:
-- Para o `novoNo` ser adicionado ao final da lista vamos considerar o atributo `cauda` onde este seja uma referencia para o ultimo `No` da nossa lista;
-- Com isso, podemos referenciar o `proximo` de `cauda` para este `novoNo`;
+- Para o `novoNo` ser adicionado ao final da lista vamos considerar o metodo `getCauda` onde este retorne uma referencia para o ultimo `No` da nossa lista:
+```java
+public No<T> getCauda(){
+        No<T> aux = cabeca;
+        if(aux == null) {
+            return null;
+        }
+
+        while (aux.getNoProximo()!=null){
+            aux=aux.getNoProximo();
+        }
+        return aux;
+    }
+```
+- Com isso, podemos referenciar o `proximo` de `getCauda` para este `novoNo`;
 - Por default, o `novoNo.proximo` ira apontar para `null`.
 ```java
  @Override
