@@ -109,7 +109,6 @@ public class ListaEncadeada<T> implements TADListaEncadeada<T> {
             auxiliar = auxiliar.getNoProximo();
         }
         System.out.println();
-
     }
 
     public No<T> getCauda(){
