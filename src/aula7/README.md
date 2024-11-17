@@ -51,6 +51,10 @@ public class ListaEncadeada<T> implements TADListaEncadeada<T> {
     private No<T> cabeca;
     private int tamanho;
 
+    public int getTamanho(){
+        return tamanho;
+    }
+
 
     public ListaEncadeada(){
         this.tamanho = 0;
@@ -117,19 +121,38 @@ public class ListaEncadeada<T> implements TADListaEncadeada<T> {
             noAnteriorPosicao = noAnteriorPosicao.getNoProximo();
         }
         No<T> noRemovido = noAnteriorPosicao.getNoProximo();
-        noAnteriorPosicao.setNoProximo(noRemovido.getNoProximo());
-        noRemovido.setNoProximo(null);
-        tamanho--;
+        if(posicao == 0) {
+            noRemovido = cabeca;
+            cabeca = noRemovido.getNoProximo();
+            tamanho--;
+        }else{
+            noAnteriorPosicao.setNoProximo(noRemovido.getNoProximo());
+            noRemovido.setNoProximo(null);
+            tamanho--;
+        }
         return noRemovido.getValor();
     }
 
     @Override
     public boolean listaVazia() {
+        if(cabeca == null) {
+            System.out.println("Lista vazia.");
+            return true;
+        }
         return false;
     }
 
     @Override
     public void imprimeLista() {
+        if(listaVazia()){
+            System.out.println("Nao ha elementos para impressao.");
+        }
+        No<T> auxiliar = cabeca;
+        while(auxiliar!= null){
+            System.out.print(" => "+auxiliar.getValor());
+            auxiliar = auxiliar.getNoProximo();
+        }
+        System.out.println();
 
     }
 
@@ -185,16 +208,16 @@ public No<T> getCauda(){
 - Com isso, podemos referenciar o `proximo` de `getCauda` para este `novoNo`;
 - Por default, o `novoNo.proximo` ira apontar para `null`.
 ```java
- @Override
-    public void insereFinal(T valor) {
-        No<T> novoNo = new No<>(valor,null);
-        if(cabeca == null) {
-            cabeca = novoNo;
-        }else{
-            getCauda().setNoProximo(novoNo);
-        }
-        tamanho++;
+@Override
+public void insereFinal(T valor) {
+    No<T> novoNo = new No<>(valor,null);
+    if(cabeca == null) {
+        cabeca = novoNo;
+    }else{
+        getCauda().setNoProximo(novoNo);
     }
+    tamanho++;
+}
 ```
 ### Insercao atraves do indice
 - Considerando que desejamos adicionar um `novoNo` a um determinado indice;
@@ -207,30 +230,30 @@ public No<T> getCauda(){
 2. `noAnteriorInsercao.proximo = novoNo`;
 3. `novoNo.proximo = noPosteriorInsercao`.
 ```java
-    @Override
-    public void inserePosicao(T valor, int posicao) {
-        //verificando se a posicao e valida
-        if(posicao == 0) {
-            insereInicio(valor);
-            return;
-        }else if(posicao == tamanho){
-            insereFinal(valor);
-            return;
-        }else if(posicao < 0 || posicao > tamanho) {
-            System.out.println("Posicao invalida.");
-            return;
-        }
-        //Insercao no meio da lista
-        No<T> novoNo = new No<T>(valor,null);
-        No<T> noAnteriorInsercao = cabeca;
-        for(int i = 0; i< posicao - 1; i++){
-            noAnteriorInsercao = noAnteriorInsercao.getNoProximo();
-        }
-        No<T> noPosteriorInsercao = noAnteriorInsercao.getNoProximo(); //1.
-        noAnteriorInsercao.setNoProximo(novoNo); //2.
-        novoNo.setNoProximo(noPosteriorInsercao); //3.
-        tamanho++;
+@Override
+public void inserePosicao(T valor, int posicao) {
+    //verificando se a posicao e valida
+    if(posicao == 0) {
+        insereInicio(valor);
+        return;
+    }else if(posicao == tamanho){
+        insereFinal(valor);
+        return;
+    }else if(posicao < 0 || posicao > tamanho) {
+        System.out.println("Posicao invalida.");
+        return;
     }
+    //Insercao no meio da lista
+    No<T> novoNo = new No<T>(valor,null);
+    No<T> noAnteriorInsercao = cabeca;
+    for(int i = 0; i< posicao - 1; i++){
+        noAnteriorInsercao = noAnteriorInsercao.getNoProximo();
+    }
+    No<T> noPosteriorInsercao = noAnteriorInsercao.getNoProximo();
+    noAnteriorInsercao.setNoProximo(novoNo);
+    novoNo.setNoProximo(noPosteriorInsercao);
+    tamanho++;
+}
 ```
 
 ## Remocao
@@ -243,3 +266,47 @@ public No<T> getCauda(){
 2. `noAnteriorRemocao.proximo = noRemovido.proximo`;
 3. `noRemovido.proximo = null`;
 - Com isso, o Garbage Collector identifica que `noRemovido` nao esta sendo mais usado como referencias ou atraves de referencias, e o mata da memoria;
+```java
+@Override
+    public T removePosicao(int posicao) {
+        if(posicao < 0 || posicao >= tamanho){
+            System.out.println("No nao removido. Posicao invalida para remocao");
+            return null;
+        }
+        No<T> noAnteriorPosicao = cabeca;
+        for(int i = 0;i < posicao - 1; i++) {
+            noAnteriorPosicao = noAnteriorPosicao.getNoProximo();
+        }
+        No<T> noRemovido = noAnteriorPosicao.getNoProximo();
+        if(posicao == 0) {
+            noRemovido = cabeca;
+            cabeca = noRemovido.getNoProximo();
+            tamanho--;
+        }else{
+            noAnteriorPosicao.setNoProximo(noRemovido.getNoProximo());
+            noRemovido.setNoProximo(null);
+            tamanho--;
+        }
+        return noRemovido.getValor();
+    }
+```
+
+## Impressao da lista
+- Primeiro validamos se a lista contem elementos para prosseguirmos;
+- Utilizamos uma **referencia** auxiliar, que aponta para `head`;
+- Percorremos os `No`s dentro do laco `while` enquanto a referencia nao for `null`;
+- Por fim, imprimimos.
+```java
+    @Override
+    public void imprimeLista() {
+        if(listaVazia()){
+            System.out.println("Nao ha elementos para impressao.");
+        }
+        No<T> auxiliar = cabeca;
+        while(auxiliar!= null){
+            System.out.print(" => "+auxiliar.getValor());
+            auxiliar = auxiliar.getNoProximo();
+        }
+        System.out.println();
+    }
+```
