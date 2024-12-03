@@ -1,4 +1,4 @@
-# Listas Duplamente Encadeadas
+# _Listas Duplamente Encadeadas_
 - Como vimos na aula anterior, temos um No `head` e cada um destes Nos contem uma referencia para o No seguinte;
 - A partir do No `head`, eu consigo percorrer todos os elementos da minha lista encadeada;
 - Por se tratar de uma lista *encadeada*, essa estrutura de dados resolve a questao da **alocacao estatica de memoria**;
