@@ -5,7 +5,7 @@
 - Por outro lado, tem complexidade O(n), entao quando temos listas com muitos elementos ha uma certa **perca de desempenho**;
 - Para resolver esse problema foram criadas as *listas duplamente encadeadas*,
 
-### Fila
+### Fila Duplamente Encadeada
 - Iremos acrescentar outra referencia ao `No`;
 - Mantemos a referencia para o proximo, porem acrescentamos uma referencia para o **anterior**;
 - Com isso entao esbarramos no conceito de *duplo encadeamento*, onde a lista seja *bidirecional*;
