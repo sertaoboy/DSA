@@ -7,7 +7,7 @@
 
 ### Fila Duplamente Encadeada
 - Iremos acrescentar outra referencia ao `No`;
-- Mantemos a referencia para o proximo, porem acrescentamos uma referencia para o **anterior**;
+- Mantemos a referencia para o **proximo**, porem acrescentamos uma referencia para o **anterior**;
 - Com isso entao esbarramos no conceito de *duplo encadeamento*, onde a lista seja *bidirecional*;
 - Isso nos permite navegar entre **os dois sentidos**;
 - Na lista encadeada, usaremos o No `header`, onde este seja `null` mas com uma referencia para o *proximo elemento*, no caso o *primeiro No*;
