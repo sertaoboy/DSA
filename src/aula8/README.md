@@ -8,7 +8,7 @@
 ### Fila Duplamente Encadeada
 - Iremos acrescentar outra referencia ao `No`;
 - Mantemos a referencia para o **proximo**, porem acrescentamos uma referencia para o **anterior**;
-- Com isso entao esbarramos no conceito de *duplo encadeamento*, onde a lista seja *bidirecional*;
+- Com isso entao esbarramos no conceito de *duplo encadeamento*, onde a fila seja *bidirecional*;
 - Isso nos permite navegar entre **os dois sentidos**;
 - Na lista encadeada, usaremos o No `header`, onde este seja `null` mas com uma referencia para o *proximo elemento*, no caso o *primeiro No*;
 > Diferente da Singly Linked List, onde tinhamos um No `head` que sempre se referia ao primeiro elemento, mas na duplamente encadeada o No `header` nao se referencia exatamente ao valor do no, ele so se referencia ao atributo `proximo`, onde este aponta para o primeiro elemento. <br>
@@ -26,6 +26,12 @@ public class FilaDuplamenteEncadeada <T> implements TADFilaDuplamenteEncadeada<T
         trailer = new No<T>(null, header, null);
         header.setProximo(trailer);
         this.tamanho = 0;
+    }
+    
+    private void insereInicio(T valor) {
+        No<T> novoNo = new No<T> (valor,null,null);
+        header.getProximo().setAnterior(novoNo);
+        novoNo.setAnterior(header);
     }
 
     @Override
@@ -51,10 +57,7 @@ public class FilaDuplamenteEncadeada <T> implements TADFilaDuplamenteEncadeada<T
 
     @Override
     public boolean filaVazia() {
-        if (tamanho == 0) {
-            return true;
-        }
-        return false;
+        return tamanho == 0;
     }
 
     @Override
@@ -79,7 +82,7 @@ public class No<T>{
     private No<T> proximo;
     private No<T> anterior;
 
-    public No(T valor, No anterior, No proximo){
+    public No(T valor, No<T> anterior, No<T> proximo){
         this.valor=valor;
         this.anterior=anterior;
         this.proximo=proximo;
