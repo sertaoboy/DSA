@@ -41,12 +41,12 @@ class No<T> {
 ```java
 public interface TADListaDuplamenteEncadeada <T> {
     // Operacoes principais
-    public void insereValor(T valor, int posicao);
-    public T removeValor(int posicao);
+    void insereValor(T valor, int posicao);
+    T removeValor(int posicao);
     
     // Operacoes secundarias
-    public boolean listaVazia();
-    public void imprimeLista();
+    boolean listaVazia();
+    void imprimeLista();
 }
 ```
 ```java

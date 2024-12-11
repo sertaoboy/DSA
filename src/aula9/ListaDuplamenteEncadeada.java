@@ -2,12 +2,12 @@ package aula9;
 
 public class ListaDuplamenteEncadeada <T> implements TADListaDuplamenteEncadeada<T>{
 
-    private No<T> header, trailer;
+    private final No<T> header, trailer;
     private int tamanho;
 
     public ListaDuplamenteEncadeada() {
-        header = new No(null,null,null);
-        trailer = new No(header, null, null);
+        header = new No<T>(null,null,null);
+        trailer = new No<T>(header, null, null);
         header.setPosterior(trailer);
         tamanho = 0;
     }
@@ -52,10 +52,7 @@ public class ListaDuplamenteEncadeada <T> implements TADListaDuplamenteEncadeada
 
     @Override
     public boolean listaVazia() {
-        if(header.getPosterior().equals(trailer)) {
-            return true;
-        }
-        return false;
+        return this.header.getPosterior().equals(trailer);
     }
 
     @Override
