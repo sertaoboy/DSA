@@ -24,7 +24,7 @@ public class FilaDuplamenteEncadeada <T> implements TADFilaDuplamenteEncadeada<T
     public FilaDuplamenteEncadeada() {
         header = new No<T>(null, null, null);
         trailer = new No<T>(null, header, null);
-        header.setProximo(trailer);
+        header.setProximo(trailer); // a partir desse momento ha o duplo encadeamento
         this.tamanho = 0;
     }
     

@@ -58,7 +58,7 @@ public class FilaDuplamenteEncadeada <T> implements TADFilaDuplamenteEncadeada<T
 
 
     public static void main(String[] args) {
-        TADFilaDuplamenteEncadeada<String> filaDuplamenteEncadeada = new FilaDuplamenteEncadeada<String>();
+        TADFilaDuplamenteEncadeada<String> filaDuplamenteEncadeada = new FilaDuplamenteEncadeada<>();
         filaDuplamenteEncadeada.imprimeFila();
         filaDuplamenteEncadeada.insereFinal("Elemento 1");
         filaDuplamenteEncadeada.imprimeFila();
