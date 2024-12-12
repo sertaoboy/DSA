@@ -52,7 +52,7 @@ void algoritmo3(int n) {
 - No nosso estudo iremos considerar unicamente o tempo de processamento.
 - A pratica de se reduzir um algoritmo a uma funcao matematica denomina-se _analise de complexidade de algoritmos_.
 
-## Funcoes mais comuns
+## Funcoes mais comuns: em ordem crescente de eficiencia para pior desempenho
 | Função         | Notação Big-O        | Tipo de Crescimento                | Exemplos de Algoritmos        |
 |----------------|----------------------|------------------------------------|-------------------------------|
 | Constante      | O(1)                | Constante                          | Acesso direto em array        |
