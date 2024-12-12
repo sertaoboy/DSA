@@ -61,8 +61,9 @@ void algoritmo3(int n) {
 | Linearítmica   | O(n log n)          | Ligeiramente mais rápida que O(n²) | Merge sort, Quick sort        |
 | Quadrática     | O(n²)               | Crescimento exponencial            | Bubble sort, Selection sort   |
 | Cúbica         | O(n³)               | Muito mais lenta                   | Algoritmos de matriz          |
-| Exponencial    | O(2ⁿ) ou O(n!)      | Explosivo                          | Problemas NP-completos        |
+| Exponencial    | O(2ⁿ)               | Explosivo                          | Problemas NP-completos        |
 | Fatorial       | O(n!)               | Extremo                            | Permutações e combinações     |
+
 
 
 ## Estudo experimental
