@@ -32,7 +32,7 @@ void algoritmo2(int n) {
     }
 }
 ```
-> O algoritmo acima leva _n*n_ passos para terminar.
+> O algoritmo acima leva _n * n_ passos para terminar.
 ```java
 void algoritmo3(int n) {
     int contador = 0;
@@ -45,7 +45,7 @@ void algoritmo3(int n) {
     }
 }
 ```
-> O algoritmo acima leva _n*n*n_ para terminar.
+> O algoritmo acima leva _n * n * n_ para terminar.
 - Qual algoritmo voce escolheria?
 - Basta olhar na funcao definida por cada algoritmo. A funcao de um algoritmo define o melhor algoritmo para um dado problema.
 - Fatores: tempo de processamento, memoria, acessos a disco, largura de banda, entre outros.
