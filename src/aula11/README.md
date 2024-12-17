@@ -61,3 +61,25 @@
   D   E F   G
 ```
 - **Ordem pos-fixada: D → E → B → F → G → C → A**
+
+### Caminhamento Interfixado (In-ordem)
+- No caminhamento interfixado (aplicado especialmente em arvores binarias), a visitacao segue esta ordem:
+1. Percorrer **recursivamente** a **subarvore esquerda** do `No` atual.
+2. **Visitar a raiz** do `No` atual.
+3. Percorrer **recursivamente** a **subarvore direita**.
+> Ordem de visitacao: Subarvore Esquerda -> Raiz -> Subarvore Direita
+```shell
+       A
+     /   \
+    B     C
+   / \   / \
+  D   E F   G
+```
+- **Ordem interfixada sera: D → B → E → A → F → C → G**
+
+### Resumo dos Caminhamentos:
+| Tipo de Caminhamento | Ordem de Visitação            |
+|-----------------------|-------------------------------|
+| Prefixado (Pré-ordem) | Raiz → Esquerda → Direita     |
+| Interfixado (In-ordem)| Esquerda → Raiz → Direita     |
+| Pós-fixado (Pós-ordem)| Esquerda → Direita → Raiz     |
